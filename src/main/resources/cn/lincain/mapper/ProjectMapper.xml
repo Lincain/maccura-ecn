@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+        
+<mapper namespace="cn.lincain.mapper.ProjectMapper">
+	<select id="selectProsByLimitAndOffset" resultMap="proResultMap">
+		SELECT
+        pro_id,pro_no,pro_name
+        FROM
+        tb_pro
+        LIMIT #{offset}, #{limit}
+	</select>
+	
+	<resultMap type="cn.lincain.domain.Project" id="proResultMap">
+		<id column="pro_id" property="projectId"/>
+		<result column="pro_no" property="projectNo"/>
+		<result column="pro_name" property="projectName"/>
+	</resultMap>
+	
+	<select id="selectProById" resultMap="proResultMap">
+		SELECT
+        pro_id,pro_no,pro_name
+        FROM
+        tb_pro
+        WHERE
+        pro_id = #{proId}
+	</select>
+	
+	<update id="updateProById">
+		UPDATE
+		tb_pro
+		SET
+		pro_no=#{project.projectNo},
+		pro_name=#{project.projectName}
+		WHERE
+		pro_id=#{proId}
+	</update>
+	
+	<insert id="addProByNo" parameterType="cn.lincain.domain.Project">
+		insert into
+		tb_pro
+		(pro_no,pro_name)
+		values(
+		#{project.projectNo},
+		#{project.projectName}
+		)
+	</insert>
+</mapper>

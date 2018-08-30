@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+        
+<mapper namespace="cn.lincain.mapper.DepartmentMapper">
+	<select id="selectDeptsByLimitAndOffset" resultMap="deptResult">
+		SELECT
+        dept_id,dept_no,dept_name
+        FROM
+        tb_dept
+        LIMIT #{offset}, #{limit}
+	</select>
+	
+	<resultMap id="deptResult" type="cn.lincain.domain.Department">
+        <id column="dept_id" property="departmentId"></id>
+        <result column="dept_no" property="departmentNo"></result>
+        <result column="dept_name" property="departmentName"></result>
+    </resultMap>
+    
+    <select id="selectDeptById" resultMap="deptResult">
+    	SELECT
+        dept_no,dept_name
+        FROM
+        tb_dept
+        WHERE
+        dept_id=#{deptNo}
+    </select>
+    
+    <update id="updateDeptById" parameterType="cn.lincain.domain.Department">
+        UPDATE
+        tb_dept
+        SET
+        dept_no = #{department.departmentNo},
+        dept_name = #{department.departmentName}
+        WHERE
+        dept_id = #{deptId}
+    </update>
+    
+    <insert id="addDeptById">
+    	INSERT INTO
+    	tb_dept
+    	(dept_no,dept_name)
+    	values
+    	(#{department.departmentNo},#{department.departmentName})
+    </insert>
+    
+    <select id="selectAllDepts" resultMap="deptResult">
+		SELECT
+        dept_id,dept_no,dept_name
+        FROM
+        tb_dept
+	</select>
+</mapper>

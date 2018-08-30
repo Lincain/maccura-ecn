@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+        
+<mapper namespace="cn.lincain.mapper.EmployeeMapper">
+	<select id="getEmployeeById" parameterType="Integer" 
+		resultMap="empResult">
+		SELECT
+		e.emp_id,e.emp_no,e.emp_name,e.dept_no,d.dept_name
+		FROM
+		tb_emp e,tb_dept d
+		WHERE
+		emp_id=#{emp_id}
+		AND
+		e.dept_no=d.dept_no
+	</select>
+	
+	<select id="selectEmpsByLimitAndOffset" resultMap="empResult">
+		SELECT
+        e.emp_id,e.emp_no,e.emp_name,e.dept_no,d.dept_name
+        FROM
+        tb_emp e,tb_dept d
+        WHERE
+        e.dept_no=d.dept_no
+        ORDER BY emp_id
+        LIMIT #{offset}, #{limit}
+	</select>
+	
+	<resultMap id="empResult" type="cn.lincain.domain.Employee">
+        <id column="emp_id" property="employeeId"></id>
+        <result column="emp_no" property="employeeNo"></result>
+        <result column="emp_name" property="employeeName"></result>
+        <result column="dept_no" property="departmentNo"></result>
+        <association property="department" javaType="cn.lincain.domain.Department">
+        	<id column="dept_id" property="departmentId"></id>
+        	<result column="dept_no" property="departmentNo"></result>
+        	<result column="dept_name" property="departmentName"></result>
+        </association>
+    </resultMap>
+    
+    <update id="updateEmpById">
+    	UPDATE
+        tb_emp
+        SET
+        emp_no = #{emp.employeeNo},
+        emp_name = #{emp.employeeName},
+        dept_no = #{emp.departmentNo}
+        WHERE
+        emp_id = #{empId}
+    </update>
+    
+    <insert id="addEmp">
+    	INSERT INTO
+    	tb_emp
+    	(emp_no,emp_name,dept_no)
+    	values
+    	(#{emp.employeeNo},#{emp.employeeName},#{emp.departmentNo})
+    </insert>
+</mapper>
