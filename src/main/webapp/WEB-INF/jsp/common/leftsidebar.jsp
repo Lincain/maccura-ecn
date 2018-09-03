@@ -12,7 +12,6 @@
             </ul>
         </li>
     </ul>
-    <hr/>
     <ul class="nav nav-pills nav-stacked dept_sidebar">
         <li role="presentation" class="active">
             <a href="#"  data-toggle="collapse" data-target="#collapse_dept">
@@ -24,7 +23,6 @@
             </ul>
         </li>
     </ul>
-    <hr/>
     <ul class="nav nav-pills nav-stacked pro_sidebar">
         <li role="presentation" class="active">
             <a href="#"  data-toggle="collapse" data-target="#collapse_pro">
@@ -36,7 +34,18 @@
             </ul>
         </li>
     </ul>
-
+	<ul class="nav nav-pills nav-stacked ecn_sidebar">
+        <li role="presentation" class="active">
+            <a href="#"  data-toggle="collapse" data-target="#collapse_ecn">
+                <span class="glyphicon glyphicon-cloud" aria-hidden="true">工程更改</span>
+            </a>
+            <ul class="nav nav-pills nav-stacked" id="collapse_ecn">
+                <li role="presentation"><a href="#" class="ecn_info">工程更改信息</a></li>
+                <li role="presentation"><a href="#" class="ecn_add_btn" data-toggle="modal" data-target=".ecn-add-modal">工程更改新增</a></li>
+            	<li class=”nav-divider”></li>
+            </ul>
+        </li>
+    </ul>
 </div><!-- /.panel-group，#hrms_sidebar_left -->
 
 <script type="text/javascript">
@@ -48,9 +57,13 @@
     $(".dept_info").click(function () {
         $(this).attr("href", "${pageContext.request.contextPath}/dept/getDeptList");
     });
-  	//跳转到部门页面
+  	//跳转到项目页面
     $(".pro_info").click(function () {
         $(this).attr("href", "${pageContext.request.contextPath}/pro/getProList");
+    });
+  	//跳转到ECN页面
+    $(".ecn_info").click(function () {
+        $(this).attr("href", "${pageContext.request.contextPath}/ecn/getEcnList");
     });
 </script>
 </body>
