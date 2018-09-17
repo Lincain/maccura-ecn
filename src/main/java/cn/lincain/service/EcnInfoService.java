@@ -8,7 +8,7 @@ public interface EcnInfoService {
     
     public int getEcnCount();
     
-    public List<EcnInfo> getEcnInfoList(int offset,int limit);
+    public List<EcnInfo> getEcnInfoList(Integer offset,Integer limit);
     
     public EcnInfo getEcnInfoById(Integer ecnNO);
     

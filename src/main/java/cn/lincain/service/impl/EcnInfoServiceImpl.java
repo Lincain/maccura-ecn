@@ -20,7 +20,7 @@ public class EcnInfoServiceImpl implements EcnInfoService {
     }
 
     @Override
-    public List<EcnInfo> getEcnInfoList(int offset, int limit) {
+    public List<EcnInfo> getEcnInfoList(Integer offset, Integer limit) {
         return ecnInfoMapper.getEcnInfoList(offset,limit);
     }
 

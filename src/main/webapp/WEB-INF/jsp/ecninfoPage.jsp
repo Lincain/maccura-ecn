@@ -32,14 +32,17 @@
                         <th>ECN名称</th>
                         <th>ECR编号</th>
                         <th>ECN编号</th>
+                        <th>创建者</th>
                         <th>操作</th>
                     </thead>
                     <tbody>
                         <c:forEach items="${ecnInfos}" var="ecn">
                             <tr>
-                            	<td>${ecn.departmentId}</td>
-                                <td>${ecn.departmentNo}</td>
-                                <td>${ecn.departmentName}</td>
+                            	<td>${ecn.ecnId}</td>
+                                <td>${ecn.ecrName}</td>
+                                <td>${ecn.ecrNo}</td>
+                                <td>${ecn.ecnNo}</td>
+                                <td>${ecn.workNo}</td>
                                 <td>
                                     <a href="#" role="button" class="btn btn-primary dept_select_btn" data-toggle="modal" data-target=".dept-select-modal">查看</a>
                                     <a href="#" role="button" class="btn btn-primary dept_edit_btn" data-toggle="modal" data-target=".dept-update-modal">编辑</a>
