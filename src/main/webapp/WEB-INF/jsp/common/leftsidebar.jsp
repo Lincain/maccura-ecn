@@ -66,5 +66,3 @@
         $(this).attr("href", "${pageContext.request.contextPath}/ecn/getEcnList");
     });
 </script>
-</body>
-</html>
