@@ -1,11 +1,15 @@
 package cn.lincain.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.lincain.domain.EcnInfo;
@@ -37,4 +41,24 @@ public class EcnInfoController {
         
         return mav;
     }
+    @RequestMapping("/getEcnById/{ecnId}")
+    @ResponseBody
+    public EcnInfo getEcnInfoById(@PathVariable("ecnId")Integer ecnId) {
+    	EcnInfo ecnInfo = ecnInfoServiceImpl.getEcnInfoById(ecnId);
+    	return ecnInfo;
+    }
+    
+    @RequestMapping("/updateEcn/{ecnId}")
+    @ResponseBody
+    public Map<String,Integer> updateEcnById(@PathVariable("ecnId")Integer ecnId,EcnInfo ecnInfo) {
+    	int code = ecnInfoServiceImpl.updateEcnById(ecnId,ecnInfo);
+    	Map<String,Integer> map = new HashMap<String,Integer>();
+    	
+    	if (code != 1) {
+			map.put("result", 100);
+			return map;
+		}
+		map.put("result", 200);
+		return map;
+	}
 }

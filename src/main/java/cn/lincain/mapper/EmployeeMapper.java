@@ -23,4 +23,6 @@ public interface EmployeeMapper {
 			@Param("emp")Employee emp);
 
 	int addEmp(@Param("emp")Employee emp);
+	
+	Employee getEmployeeByNo(@Param("emp_no")Integer empNo);
 }

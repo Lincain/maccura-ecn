@@ -14,6 +14,7 @@ public class EcnInfoServiceImpl implements EcnInfoService {
     
     @Autowired
     private EcnInfoMapper ecnInfoMapper;
+    
     @Override
     public int getEcnCount() {
         return ecnInfoMapper.getEcnCount();
@@ -25,8 +26,13 @@ public class EcnInfoServiceImpl implements EcnInfoService {
     }
 
     @Override
-    public EcnInfo getEcnInfoById(Integer ecnNO) {
-        return null;
+    public EcnInfo getEcnInfoById(Integer ecnId) {
+        return ecnInfoMapper.getEcnInfoById(ecnId);
     }
+
+	@Override
+	public int updateEcnById(Integer ecnId, EcnInfo ecnInfo) {
+		return ecnInfoMapper.updateEcnById(ecnId,ecnInfo);
+	}
 
 }

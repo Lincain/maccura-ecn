@@ -17,4 +17,11 @@ public interface EcnInfoMapper {
     List<EcnInfo> getEcnInfoList(@Param("offset")Integer offset, 
     		@Param("limit")Integer limit);
 
+
+	EcnInfo getEcnInfoById(@Param("ecnId")Integer ecnId);
+
+
+	int updateEcnById(@Param("ecnId")Integer ecnId, 
+			@Param("ecninfo")EcnInfo ecnInfo);
+
 }

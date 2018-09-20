@@ -18,4 +18,25 @@
     	<result property="ecnNo" column="ecn_no"/>
     	<result property="workNo" column="work_no"/>   	
     </resultMap>
+    
+    <select id="getEcnInfoById" resultMap="ecnResultMap">
+    	SELECT
+    	*
+    	FROM 
+    	tb_ecn
+    	WHERE
+    	ecn_id=#{ecnId}
+    </select>
+    
+    <update id="updateEcnById">
+    	UPDATE
+    	tb_ecn
+    	SET
+    	ecr_name=#{ecninfo.ecrName},
+    	ecn_no=#{ecninfo.ecnNo},
+    	ecr_no=#{ecninfo.ecrNo},
+    	work_no=#{ecninfo.workNo}
+    	WHERE
+    	ecn_id=#{ecnId}
+    </update>
 </mapper>

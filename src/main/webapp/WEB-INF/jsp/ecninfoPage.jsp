@@ -5,18 +5,18 @@
     <title>ECN管理页面</title>
 </head>
 <body>
-<div class="hrms_dept_container">
+<div class="hrms_ecn_container">
     <!-- 导航栏-->
     <%@ include file="./common/head.jsp"%>
 
 
     <!-- 中间部分（左侧栏+表格内容） -->
-    <div class="hrms_dept_body">
+    <div class="hrms_ecn_body">
         <!-- 左侧栏 -->
         <%@ include file="./common/leftsidebar.jsp"%>
 
         <!-- 部门表格内容 -->
-        <div class="dept_info col-sm-10">
+        <div class="ecn_info col-sm-10">
             <div class="panel panel-success">
                 <!-- 路径导航 -->
                 <div class="panel-heading">
@@ -26,7 +26,7 @@
                     </ol>
                 </div>
                 <!-- Table -->
-                <table class="table table-bordered table-hover" id="dept_table">
+                <table class="table table-bordered table-hover" id="ecn_table">
                     <thead>
                     	<th>序号</th>
                         <th>ECN名称</th>
@@ -44,9 +44,9 @@
                                 <td>${ecn.ecnNo}</td>
                                 <td>${ecn.workNo}</td>
                                 <td>
-                                    <a href="#" role="button" class="btn btn-primary dept_select_btn" data-toggle="modal" data-target=".dept-select-modal">查看</a>
-                                    <a href="#" role="button" class="btn btn-primary dept_edit_btn" data-toggle="modal" data-target=".dept-update-modal">编辑</a>
-                                    <a href="#" role="button" class="btn btn-danger dept_delete_btn">删除</a>
+                                    <a href="#" role="button" class="btn btn-primary ecn_select_btn" data-toggle="modal" data-target=".ecn-extend-modal">查看</a>
+                                    <a href="#" role="button" class="btn btn-primary ecn_edit_btn" data-toggle="modal" data-target=".ecn-update-modal">编辑</a>
+                                    <a href="#" role="button" class="btn btn-danger ecn_delete_btn">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -59,7 +59,7 @@
                     </div>
                     <nav aria-label="Page navigation" class="pull-right">
                         <ul class="pagination">
-                            <li><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=1">首页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/ecn/getEcnList?pageNo=1">首页</a></li>
                             <c:if test="${curPageNo==1}">
                                 <li class="disabled">
                                     <a href="#" aria-label="Previous" class="prePage">
@@ -77,10 +77,10 @@
 
                             <c:forEach begin="1" end="${totalPages<5?totalPages:5}" step="1" var="itemPage">
                                 <c:if test="${curPageNo == itemPage}">
-                                    <li class="active"><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=${itemPage}">${itemPage}</a></li>
+                                    <li class="active"><a href="${pageContext.request.contextPath}/ecn/getEcnList?pageNo=${itemPage}">${itemPage}</a></li>
                                 </c:if>
                                 <c:if test="${curPageNo != itemPage}">
-                                    <li><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=${itemPage}">${itemPage}</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/ecn/getEcnList?pageNo=${itemPage}">${itemPage}</a></li>
                                 </c:if>
                             </c:forEach>
 
@@ -98,7 +98,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            <li><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=${totalPages}">尾页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/ecn/getEcnList?pageNo=${totalPages}">尾页</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -106,8 +106,9 @@
         </div><!-- /.dept_info -->
     </div><!-- /.hrms_dept_body -->
 
-    <%@ include file="departmentAdd.jsp"%>
-    <%@ include file="departmentUpdate.jsp"%>
+    <%@ include file="ecninfoAdd.jsp"%>
+    <%@ include file="ecninfoUpdate.jsp"%>
+    <%@ include file="ecninfoExtend.jsp"%>
 
     <!-- 尾部-->
     <%@ include file="./common/foot.jsp"%>
@@ -121,19 +122,19 @@
     $(".prePage").click(function () {
          if (curPageNo > 1){
              var pageNo = curPageNo - 1;
-             $(this).attr("href", "${pageContext.request.contextPath}/dept/getDeptList?pageNo="+pageNo);
+             $(this).attr("href", "${pageContext.request.contextPath}/ecn/getEcnList?pageNo="+pageNo);
          }
     });
     //下一页
     $(".nextPage").click(function () {
         if (curPageNo < totalPages){
             var pageNo = curPageNo + 1;
-            $(this).attr("href", "${pageContext.request.contextPath}/dept/getDeptList?pageNo="+pageNo);
+            $(this).attr("href", "${pageContext.request.contextPath}/ecn/getEcnList?pageNo="+pageNo);
         }
     });
 	
    	<!--部门删除操作-->
-    $(".dept_delete_btn").click(function () {
+    $(".ecn_delete_btn").click(function () {
         var delDeptId = $(this).parent().parent().find("td:eq(0)").text();
         var delDeptName = $(this).parent().parent().find("td:eq(1)").text();
         var curPageNo = ${curPageNo};
@@ -144,7 +145,7 @@
                 success:function (result) {
                     if (result.code == 100){
                         alert("删除成功！");
-                        window.location.href = "${pageContext.request.contextPath}/dept/getDeptList?pageNo="+curPageNo;
+                        window.location.href = "${pageContext.request.contextPath}/ecn/getEcnList?pageNo="+curPageNo;
                     }else {
                         alert(result.extendInfo.del_dept_error);
                     }

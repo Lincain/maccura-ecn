@@ -54,7 +54,6 @@ public class EmployeeController {
 		
 		Map<String,Object> result = new HashMap<>();
 		Employee employee = null;
-		
 		if(empId > 0) {
 			employee = empServiceImpl.getEmpById(empId);
 			result.put("employee", employee);
@@ -62,6 +61,22 @@ public class EmployeeController {
 		List<Department> depts = deptServiceImpl.getAllDepts();
 		result.put("department", depts);
 		
+		if(result.get("employee") != null) {
+			return result;
+		}
+		return null;
+	}
+	
+	@RequestMapping("/getEmpByNo/{empNo}")
+	@ResponseBody
+	public Map<String,Object> getEmpByNo(@PathVariable("empNo")Integer empNo) {
+		
+		Map<String,Object> result = new HashMap<>();
+		Employee employee = null;
+		if(empNo > 0) {
+			employee = empServiceImpl.getEmpByNo(empNo);
+			result.put("employee", employee);
+		}	
 		if(result.get("employee") != null) {
 			return result;
 		}

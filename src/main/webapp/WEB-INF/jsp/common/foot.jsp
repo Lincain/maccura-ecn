@@ -4,7 +4,7 @@
     <title>Foot Page</title>
 </head>
 <body>
-<div class="hrms_footer" style="text-align: center;">
+<div class="hrms_footer" style="position: absolute;bottom:100px;right:40%">
     <address>
         <strong>Copyright&copy;迈克生物.Inc</strong><br>
        	 徐汇区民润大厦五层<br>

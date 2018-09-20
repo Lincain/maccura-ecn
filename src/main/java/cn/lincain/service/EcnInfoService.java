@@ -10,6 +10,8 @@ public interface EcnInfoService {
     
     public List<EcnInfo> getEcnInfoList(Integer offset,Integer limit);
     
-    public EcnInfo getEcnInfoById(Integer ecnNO);
+    public EcnInfo getEcnInfoById(Integer ecnId);
+
+	public int updateEcnById(Integer ecnId, EcnInfo ecnInfo);
     
 }
