@@ -106,7 +106,6 @@
         </div><!-- /.dept_info -->
     </div><!-- /.hrms_dept_body -->
 
-    <%@ include file="ecninfoAdd.jsp"%>
     <%@ include file="ecninfoUpdate.jsp"%>
     <%@ include file="ecninfoExtend.jsp"%>
 

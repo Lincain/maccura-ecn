@@ -45,4 +45,11 @@
 		#{project.projectName}
 		)
 	</insert>
+	
+	<select id="getProListByEcn" resultMap="proResultMap">
+		SELECT
+        pro_id,pro_no,pro_name
+        FROM
+        tb_pro
+	</select>
 </mapper>

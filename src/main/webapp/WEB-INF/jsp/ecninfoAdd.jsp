@@ -2,35 +2,48 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>部门ECN页面</title>
+    <title>工程更改申请</title>
 </head>
 <body>
-<div class="modal fade dept-add-modal" tabindex="-1" role="dialog" aria-labelledby="dept-add-modal">
+<div class="modal fade ecn-add-modal" tabindex="-1" role="dialog" aria-labelledby="ecn-add-modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">部门新增</h4>
+                <h4 class="modal-title">工程更改申请</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal add_dept_form">
+                <form class="form-horizontal add_ecn_form">
                     <div class="form-group">
-                        <label for="add_deptNo" class="col-sm-2 control-label">部门编号</label>
+                        <label for="add_ProNo" class="col-sm-3 control-label">项目编号</label>
                         <div class="col-sm-8">
-                            <input type="text" name="departmentNo" class="form-control" id="add_deptNo">
+	                        <select id="add_pro" name="projectNo" class="selectpicker show-tick form-control">
+							</select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="add_deptName" class="col-sm-2 control-label">部门名称</label>
+                        <label for="add_ecrName" class="col-sm-3 control-label">更改名称</label>
                         <div class="col-sm-8">
-                            <input type="text" name="departmentName" class="form-control" id="add_deptName">
+                            <input type="text" name="ecrName" class="form-control" id="add_ecrName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add_ecrTime" class="col-sm-3 control-label">ECR申请时间</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="ecrTime" class="form-control" id="add_ecrTime">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add_ecnTime" class="col-sm-3 control-label">ECN申请时间</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="ecnTime" class="form-control" id="add_ecnTime">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary dept_save_btn">保存</button>
+                <button type="button" class="btn btn-primary ecn_save_btn">保存</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -42,29 +55,49 @@
     //1 点击部门新增按钮，弹出模态框；
     //2 输入新增部门信息，点击保存按钮，发送AJAX请求到后台进行保存；
     //3 保存成功跳转最后一页
-    /* $(".dept_add_btn").click(function () {
-        $('.dept-add-modal').modal({
-        	backdrop:'static',
-        	keyboard:false
+    $(".add_ecn_btn").click(function () {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/user/getPro/",
+            type:"GET",
+            success:function (data) {
+                if (data != null){                
+                    
+                    //清空下拉，并回显
+                    $("#add_pro").empty();
+                    var option = document.createElement("option");
+                    $(option).val("请选择项目");
+                	$(option).text("---请选择项目---");
+                	$("#add_pro").append(option);
+                    for(var i=0;i<data.projects.length;i++){
+                    	var option = document.createElement("option");
+                    	$(option).val(data.projects[i].projectNo);
+                    	$(option).text(data.projects[i].projectNo);
+                    	$("#add_pro").append(option);
+                    }
+                }else {
+                    alert("操作失败");
+                }
+            }
+            
         });
-    });  */
-
-    $(".dept_save_btn").click(function () {
-        var departmentNo = $("#add_deptNo").val();
-        var departmentName = $("#add_deptName").val();
+    });  
+	
+    $(".ecn_save_btn").click(function () {
+        var departmentNo = $("#add_ecnNo").val();
+        var departmentName = $("#add_ecnName").val();
         //验证省略...
         $.ajax({
-            url:"${pageContext.request.contextPath}/dept/addDept",
+            url:"${pageContext.request.contextPath}/ecn/addEcn",
             type:"PUT",
-            data:$(".add_dept_form").serialize(),
+            data:$(".add_ecn_form").serialize(),
             success:function (result) {
                 if(result.code == 200){
                     $.ajax({
-                        url:"${pageContext.request.contextPath}/dept/getTotalPages",
+                        url:"${pageContext.request.contextPath}/ecn/getTotalPages",
                         type:"GET",
                         success:function (result) {
                              var totalPage = result.code;
-                             window.location.href="${pageContext.request.contextPath}/dept/getDeptList?pageNo="+totalPage;
+                             window.location.href="${pageContext.request.contextPath}/ecn/getEcnList?pageNo="+totalPage;
                         }
                     });
                 }else {

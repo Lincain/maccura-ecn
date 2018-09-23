@@ -24,5 +24,6 @@ public interface ProjectMapper {
 			@Param("project")Project project);
 
 	int addProByNo(@Param("project")Project project);
-
+	
+	List<Project> getProListByEcn();
 }

@@ -51,7 +51,7 @@
     });
     //账号退出
     $(".hrms_logout").click(function () {
-        window.location.href = "${pageContext.request.contextPath}/logout";
+        window.location.href = "${pageContext.request.contextPath}/login";
     });
 </script>
 </body>
