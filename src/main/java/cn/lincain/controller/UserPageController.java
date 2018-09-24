@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,5 +43,25 @@ public class UserPageController {
 		
 		result.put("projects", projects);
 		return result;
+	}
+	
+	@RequestMapping("/addEcn")
+	@ResponseBody
+	public void addEcn(HttpServletRequest request) {
+		
+		String projectNo = null;
+		String ecrName = null;
+		String ecrTime = null;
+		String ecnTime = null;
+		
+		projectNo = request.getParameter("projectNo");
+		ecrName = request.getParameter("ecrName");
+		ecrTime = request.getParameter("ecrTime");
+		ecnTime = request.getParameter("ecnTime");
+		
+		System.out.println(projectNo);
+		System.out.println(ecrName);
+		System.out.println(ecrTime);
+		System.out.println(ecnTime);
 	}
 }

@@ -83,11 +83,8 @@
     });  
 	
     $(".ecn_save_btn").click(function () {
-        var departmentNo = $("#add_ecnNo").val();
-        var departmentName = $("#add_ecnName").val();
-        //验证省略...
         $.ajax({
-            url:"${pageContext.request.contextPath}/ecn/addEcn",
+            url:"${pageContext.request.contextPath}/user/addEcn",
             type:"PUT",
             data:$(".add_ecn_form").serialize(),
             success:function (result) {
@@ -97,7 +94,7 @@
                         type:"GET",
                         success:function (result) {
                              var totalPage = result.code;
-                             window.location.href="${pageContext.request.contextPath}/ecn/getEcnList?pageNo="+totalPage;
+                             window.location.href="${pageContext.request.contextPath}/user/getEcnList?pageNo="+totalPage;
                         }
                     });
                 }else {
