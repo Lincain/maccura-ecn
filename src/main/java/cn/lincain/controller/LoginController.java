@@ -20,7 +20,11 @@ public class LoginController {
 		
 		if((username+password).equals("admin1234")) {
 			return "main";
-		}else {
+		}
+		if((username+password).equals("lincain2008")) {
+			return "userpage";
+		}
+		else {
 			return "login";
 		}
 	}

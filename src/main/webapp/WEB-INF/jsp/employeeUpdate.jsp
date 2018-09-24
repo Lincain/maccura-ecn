@@ -31,7 +31,6 @@
                         <div class="col-sm-8">
 	                        <select id="update_dept" name="departmentName" class="selectpicker show-tick form-control">
 							</select>
-                            <!-- <input type="text" name="department" class="form-control" id="update_deptName"> -->
                         </div>
                     </div>
                 </form>

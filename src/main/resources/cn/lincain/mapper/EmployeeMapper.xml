@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
         
 <mapper namespace="cn.lincain.mapper.EmployeeMapper">
+	<!-- 根据员工的序号进行查找 -->
 	<select id="getEmployeeById" parameterType="Integer" 
 		resultMap="empResult">
 		SELECT
@@ -11,6 +12,19 @@
 		tb_emp e,tb_dept d
 		WHERE
 		emp_id=#{emp_id}
+		AND
+		e.dept_no=d.dept_no
+	</select>
+	
+	<!-- 根据员工的编号进行查找 -->
+	<select id="getEmployeeByNo" parameterType="Integer" 
+		resultMap="empResult">
+		SELECT
+		e.emp_id,e.emp_no,e.emp_name,e.dept_no,d.dept_name
+		FROM
+		tb_emp e,tb_dept d
+		WHERE
+		emp_no=#{emp_no}
 		AND
 		e.dept_no=d.dept_no
 	</select>

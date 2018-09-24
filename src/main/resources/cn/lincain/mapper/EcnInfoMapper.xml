@@ -3,5 +3,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
         
 <mapper namespace="cn.lincain.mapper.EcnInfoMapper">
-
+    <select id="getEcnInfoList" resultMap="ecnResultMap">
+        SELECT
+        *
+        FROM
+        tb_ecn
+        LIMIT #{offset}, #{limit}
+    </select>
+    
+    <resultMap type="cn.lincain.domain.EcnInfo" id="ecnResultMap">
+    	<id property="ecnId" column="ecn_id"/>
+    	<result property="ecrName" column="ecr_name"/>
+    	<result property="ecrNo" column="ecr_no"/>
+    	<result property="ecnNo" column="ecn_no"/>
+    	<result property="workNo" column="work_no"/>   	
+    </resultMap>
+    
+    <select id="getEcnInfoById" resultMap="ecnResultMap">
+    	SELECT
+    	*
+    	FROM 
+    	tb_ecn
+    	WHERE
+    	ecn_id=#{ecnId}
+    </select>
+    
+    <update id="updateEcnById">
+    	UPDATE
+    	tb_ecn
+    	SET
+    	ecr_name=#{ecninfo.ecrName},
+    	ecn_no=#{ecninfo.ecnNo},
+    	ecr_no=#{ecninfo.ecrNo},
+    	work_no=#{ecninfo.workNo}
+    	WHERE
+    	ecn_id=#{ecnId}
+    </update>
 </mapper>

@@ -28,9 +28,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	public Employee getEmpById(Integer empId) {
-		
 		return empMapper.getEmployeeById(empId);
 	}
+	
+	public Employee getEmpByNo(Integer empNo) {
+		return empMapper.getEmployeeByNo(empNo);
+	}
+	
 
 	public int updateEmpById(Integer empId, Employee emp) {
 		return empMapper.updateEmpById(empId,emp);

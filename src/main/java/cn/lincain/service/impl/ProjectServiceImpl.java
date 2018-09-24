@@ -36,4 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
 		return proMapper.addProByNo(project);
 	}
 
+	public List<Project> getProListByEcn() {
+		return proMapper.getProListByEcn();
+	}
 }
