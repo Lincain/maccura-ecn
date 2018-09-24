@@ -24,19 +24,19 @@
                     <div class="form-group">
                         <label for="add_ecrName" class="col-sm-3 control-label">更改名称</label>
                         <div class="col-sm-8">
-                            <input type="text" name="ecrName" class="form-control" id="add_ecrName">
+                            <input type="text" name="ecrName" class="form-control" id="add_ecrName">		
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="add_ecrTime" class="col-sm-3 control-label">ECR申请时间</label>
                         <div class="col-sm-8">
-                            <input type="text" name="ecrTime" class="form-control" id="add_ecrTime">
+                            <input type="text" name="ecrTime" class="ecn_time form-control" id="add_Time">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="add_ecnTime" class="col-sm-3 control-label">ECN申请时间</label>
                         <div class="col-sm-8">
-                            <input type="text" name="ecnTime" class="form-control" id="add_ecnTime">
+                            <input type="text" name="ecnTime" class="ecn_time form-control" id="add_Time">
                         </div>
                     </div>
                 </form>
@@ -110,7 +110,19 @@
 
     });
 
-
+    $(".ecn_time").datetimepicker({
+        format : 'yyyy-mm-dd', // 展现格式
+		startDate : "2010-01-01",// 开始时间
+		endDate : "2020-01-01", // 结束时间
+		autoclose : true, // 选择日期后关闭
+		// 选择器打开之后首先显示的视图
+		// 0表示分钟(默认),1表示小时,2表示天,3表示月,4表示年
+		startView : 2,
+		// 选择器所能够提供的最精确的时间选择视图
+		// 0表示分钟(默认),1表示小时,2表示天,3表示月,4表示年
+		minView : 2,
+		language : 'zh-CN', //显示语言为中文
+    });
 
 </script>
 </body>

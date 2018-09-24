@@ -34,6 +34,7 @@ public class UserPageController {
 	@RequestMapping("/getPro")
 	@ResponseBody
 	public Map<String,Object> getProList() {
+		
 		Map<String,Object> result = new HashMap<String, Object>();
 		
 		List<Project> projects = projectServiceImpl.getProListByEcn();
