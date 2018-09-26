@@ -32,13 +32,7 @@
                         <div class="col-sm-8">
                             <input type="text" name="ecrTime" class="ecn_time form-control" id="add_Time">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add_ecnTime" class="col-sm-3 control-label">ECN申请时间</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="ecnTime" class="ecn_time form-control" id="add_Time">
-                        </div>
-                    </div>
+                    </div>                 
                 </form>
             </div>
             <div class="modal-footer">

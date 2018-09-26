@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import cn.lincain.domain.EcnInfo;
 import cn.lincain.mapper.EcnInfoMapper;
 import cn.lincain.service.EcnInfoService;
+import cn.lincain.tool.EcnTools;
 
 @Service
 public class EcnInfoServiceImpl implements EcnInfoService {
@@ -36,11 +37,24 @@ public class EcnInfoServiceImpl implements EcnInfoService {
 	}
 
 	@Override
-	public int addEcnByUser(String... args) {
+	public int addEcnByUser(String projectNo,String ecrName,String ecrTime) {
 		
+		int count = 1;
 		List<EcnInfo> ecnInfos = ecnInfoMapper.getEcnInfoListByUser();
 		
-		return 0;
+		for (EcnInfo ecnInfo : ecnInfos) {
+			
+			if(ecnInfo.getEcrNo().contains(ecrTime)) {
+				count++;
+			}
+		}
+		
+		String ecrNo = EcnTools.toEcr(ecrTime, count);
+		
+		System.out.println(ecrNo);
+		
+		return ecnInfoMapper.addEcnByUser();
+		
 	}
 	
 }

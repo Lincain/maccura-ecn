@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
         
 <mapper namespace="cn.lincain.mapper.EcnInfoMapper">
+	
     <select id="getEcnInfoList" resultMap="ecnResultMap">
         SELECT
         *
@@ -43,7 +44,20 @@
     <select id="getEcnInfoListByUser" resultMap="ecnResultMap">
     	SELECT
     	*
-    	FROM 
+    	FROM
     	tb_ecn
     </select>
+    
+    <insert id="addEcnByUser">
+    	INSERT
+    	INTO
+    	tb_ecn
+    	(
+    	ecr_name,ecn_no,ecr_no,work_no,pro_no
+    	)
+    	VALUES
+    	(
+    	#{ecninfo.ecrName},#{ecninfo.ecnNo},#{ecninfo.ecrNo},work_no=#{ecninfo.workNo}
+    	)
+    </insert>
 </mapper>
