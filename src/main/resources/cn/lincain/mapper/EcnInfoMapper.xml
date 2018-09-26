@@ -39,4 +39,11 @@
     	WHERE
     	ecn_id=#{ecnId}
     </update>
+    
+    <select id="getEcnInfoListByUser" resultMap="ecnResultMap">
+    	SELECT
+    	*
+    	FROM 
+    	tb_ecn
+    </select>
 </mapper>

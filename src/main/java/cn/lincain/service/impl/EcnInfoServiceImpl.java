@@ -35,4 +35,12 @@ public class EcnInfoServiceImpl implements EcnInfoService {
 		return ecnInfoMapper.updateEcnById(ecnId,ecnInfo);
 	}
 
+	@Override
+	public int addEcnByUser(String... args) {
+		
+		List<EcnInfo> ecnInfos = ecnInfoMapper.getEcnInfoListByUser();
+		
+		return 0;
+	}
+	
 }
