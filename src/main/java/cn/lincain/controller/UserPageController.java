@@ -62,10 +62,10 @@ public class UserPageController {
 		
 		ecrTime = (ecrTime.length() == 0? "暂时不取ECR" : ecrTime.replaceAll("-", ""));
 		
-		System.out.println(ecrTime);
-		System.out.println(projectNo);
-//		ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime);
-		System.out.println(ecrName);
-		System.out.println(empNo);
+//		System.out.println(ecrTime);
+//		System.out.println(projectNo);
+		ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime,empNo);
+//		System.out.println(ecrName);
+//		System.out.println(empNo);
 	}
 }

@@ -27,6 +27,6 @@ public interface EcnInfoMapper {
 
 	List<EcnInfo> getEcnInfoListByUser();
 
-	int addEcnByUser();
+	int addEcnByUser(@Param("ecnInfo")EcnInfo ecnInfo);
 
 }

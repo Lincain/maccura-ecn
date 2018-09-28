@@ -48,7 +48,7 @@
     	tb_ecn
     </select>
     
-    <insert id="addEcnByUser">
+    <insert id="addEcnByUser" parameterType="cn.lincain.domain.EcnInfo">
     	INSERT
     	INTO
     	tb_ecn

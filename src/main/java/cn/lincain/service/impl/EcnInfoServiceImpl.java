@@ -37,7 +37,7 @@ public class EcnInfoServiceImpl implements EcnInfoService {
 	}
 
 	@Override
-	public int addEcnByUser(String projectNo,String ecrName,String ecrTime) {
+	public int addEcnByUser(String projectNo,String ecrName,String ecrTime,String empNo) {
 		
 		int count = 1;
 		List<EcnInfo> ecnInfos = ecnInfoMapper.getEcnInfoListByUser();
