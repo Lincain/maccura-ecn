@@ -53,16 +53,19 @@ public class UserPageController {
 		String projectNo = null;
 		String ecrName = null;
 		String ecrTime = null;
+		String empNo=null;
 
 		projectNo = request.getParameter("projectNo");
 		ecrName = request.getParameter("ecrName");
 		ecrTime = request.getParameter("ecrTime");
-
+		empNo = request.getParameter("empNo");
+		
 		ecrTime = (ecrTime.length() == 0? "暂时不取ECR" : ecrTime.replaceAll("-", ""));
 		
 		System.out.println(ecrTime);
 		System.out.println(projectNo);
-		ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime);
+//		ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime);
 		System.out.println(ecrName);
+		System.out.println(empNo);
 	}
 }

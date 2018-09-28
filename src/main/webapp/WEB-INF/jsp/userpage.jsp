@@ -26,15 +26,15 @@
 					<div>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon">工号</span>
-							<input type="text" class="form-control" placeholder="Twitterhandle">
+							<input type="text" class="emp_no form-control" id="empNo" value="3689">
 						</div><br>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon">姓名</span>
-							<input type="text" class="form-control" placeholder="Twitterhandle">
+							<input type="text" class=" emp_name form-control" placeholder="Twitterhandle">
 						</div><br>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon">部门</span>
-							<input type="text" class="form-control" placeholder="Twitterhandle">
+							<input type="text" class="dept_name form-control" placeholder="Twitterhandle">
 						</div>
 					</div><br>
 					<button id="fat-btn" class="add_ecn_btn btn btn-primary glyphicon glyphicon-plus btn-block" data-toggle="modal" data-target=".ecn-add-modal">申请工程更改</button><br>
@@ -52,8 +52,8 @@
 							<th>序号</th>
 							<th>项目编号</th>
 							<th>更改名称</th>
-							<th>ECR单号</th>
-							<th>ECN单号</th>
+							<th>工程更改申请单号</th>
+							<th>工程更改通知单号</th>
 							<th>操作</th>
 						</thead>
 						<tbody>
