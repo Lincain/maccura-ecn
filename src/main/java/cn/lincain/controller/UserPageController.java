@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysql.cj.xdevapi.Result;
+
 import cn.lincain.domain.Project;
 import cn.lincain.service.impl.DepartmentServiceImpl;
 import cn.lincain.service.impl.EcnInfoServiceImpl;
@@ -48,8 +50,8 @@ public class UserPageController {
 
 	@RequestMapping("/addEcn")
 	@ResponseBody
-	public void addEcn(HttpServletRequest request) {
-
+	public Map<String, Integer> addEcn(HttpServletRequest request) {
+		Map<String, Integer> map = new HashMap<>();
 		String projectNo = null;
 		String ecrName = null;
 		String ecrTime = null;
@@ -62,10 +64,14 @@ public class UserPageController {
 		
 		ecrTime = (ecrTime.length() == 0? "暂时不取ECR" : ecrTime.replaceAll("-", ""));
 		
-//		System.out.println(ecrTime);
-//		System.out.println(projectNo);
-		ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime,empNo);
-//		System.out.println(ecrName);
-//		System.out.println(empNo);
+		int code = ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime,empNo);
+		
+		if(code != 1) {
+			map.put("result",200);
+		}else {
+			map.put("result", 100);
+		}
+		
+		return map;
 	}
 }

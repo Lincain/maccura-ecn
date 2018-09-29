@@ -53,7 +53,12 @@ public class EcnInfoServiceImpl implements EcnInfoService {
 		
 		System.out.println(ecrNo);
 		
-		return ecnInfoMapper.addEcnByUser();
+		EcnInfo ecnInfo = new EcnInfo();
+		ecnInfo.setEcrName(ecrName);
+		ecnInfo.setEcrNo(ecrNo);
+		ecnInfo.setEmpNo(empNo);
+		ecnInfo.setProNo(projectNo);
+		return ecnInfoMapper.addEcnByUser(ecnInfo);
 		
 	}
 	
