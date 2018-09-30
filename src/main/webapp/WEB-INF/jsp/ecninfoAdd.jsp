@@ -89,9 +89,9 @@
             type:"PUT",
             data:postData,
             success:function (result) {
-                if(result.code == 200){
+                if(result.result == 100){
                     $.ajax({
-                        url:"${pageContext.request.contextPath}/ecn/getTotalPages",
+                        url:"${pageContext.request.contextPath}/user/getTotalPages",
                         type:"GET",
                         success:function (result) {
                              var totalPage = result.code;

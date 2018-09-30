@@ -57,11 +57,14 @@
 							<th>操作</th>
 						</thead>
 						<tbody>
-							<c:forEach items="${departments}" var="dept">
+							<c:forEach items="${ecnInfos}" var="ecninfo">
 								<tr>
-									<td>${dept.departmentId}</td>
-									<td>${dept.departmentNo}</td>
-									<td>${dept.departmentName}</td>
+									<td>${ecninfo.ecnId}</td>
+                            		<td>${ecninfo.proNo}</td>
+                                	<td>${ecninfo.ecrName}</td>
+                                	<td>${ecninfo.ecrNo}</td>
+                                	<td>${ecninfo.ecnNo}</td>
+                                
 									<td>
 										<a href="#" role="button" class="btn btn-primary dept_edit_btn" data-toggle="modal" data-target=".dept-update-modal">编辑</a>
 										<a href="#" role="button" class="btn btn-danger dept_delete_btn">删除</a>
