@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mysql.cj.xdevapi.Result;
-
 import cn.lincain.domain.Project;
 import cn.lincain.service.impl.DepartmentServiceImpl;
 import cn.lincain.service.impl.EcnInfoServiceImpl;
