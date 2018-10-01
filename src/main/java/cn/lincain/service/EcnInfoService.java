@@ -14,4 +14,5 @@ public interface EcnInfoService {
 
 	public int updateEcnById(Integer ecnId, EcnInfo ecnInfo);
     
+	public int addEcnByUser(String projectNo,String ecrName,String ecrTime,String empNo);
 }

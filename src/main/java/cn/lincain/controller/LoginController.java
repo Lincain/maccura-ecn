@@ -22,7 +22,7 @@ public class LoginController {
 			return "main";
 		}
 		if((username+password).equals("lincain2008")) {
-			return "userpage";
+			return "redirect:/user/getEcnList";
 		}
 		else {
 			return "login";
