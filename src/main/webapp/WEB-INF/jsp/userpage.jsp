@@ -26,15 +26,15 @@
 					<div>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon">工号</span>
-							<input type="text" class="form-control" placeholder="Twitterhandle">
+							<input type="text" class="emp_no form-control" id="empNo" value="3689" readonly="readonly">
 						</div><br>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon">姓名</span>
-							<input type="text" class="form-control" placeholder="Twitterhandle">
+							<input type="text" class=" emp_name form-control" placeholder="Twitterhandle">
 						</div><br>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon">部门</span>
-							<input type="text" class="form-control" placeholder="Twitterhandle">
+							<input type="text" class="dept_name form-control" placeholder="Twitterhandle">
 						</div>
 					</div><br>
 					<button id="fat-btn" class="add_ecn_btn btn btn-primary glyphicon glyphicon-plus btn-block" data-toggle="modal" data-target=".ecn-add-modal">申请工程更改</button><br>
@@ -52,19 +52,22 @@
 							<th>序号</th>
 							<th>项目编号</th>
 							<th>更改名称</th>
-							<th>ECR单号</th>
-							<th>ECN单号</th>
+							<th>工程更改申请单号</th>
+							<th>工程更改通知单号</th>
 							<th>操作</th>
 						</thead>
 						<tbody>
-							<c:forEach items="${departments}" var="dept">
+							<c:forEach items="${ecnInfos}" var="ecninfo">
 								<tr>
-									<td>${dept.departmentId}</td>
-									<td>${dept.departmentNo}</td>
-									<td>${dept.departmentName}</td>
+									<td>${ecninfo.ecnId}</td>
+                            		<td>${ecninfo.proNo}</td>
+                                	<td>${ecninfo.ecrName}</td>
+                                	<td>${ecninfo.ecrNo}</td>
+                                	<td>${ecninfo.ecnNo}</td>
+                                
 									<td>
-										<a href="#" role="button" class="btn btn-primary dept_edit_btn" data-toggle="modal" data-target=".dept-update-modal">编辑</a>
-										<a href="#" role="button" class="btn btn-danger dept_delete_btn">删除</a>
+										<a href="#" role="button" class="btn btn-primary ecn_edit_btn" data-toggle="modal" data-target=".ecn-update-modal">编辑</a>
+										<a href="#" role="button" class="btn btn-danger ecr_delete_btn">删除</a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -73,11 +76,11 @@
 
 					<div class="panel-body">
 						<div class="table_items">
-							当前第<span class="badge">${curPageNo}</span>页，共有<span class="badge">${totalPages}</span>页，总记录数<span class="badge">${totalItems}</span>条。
+							当前第<span class="badge">${curPageNo}</span>页，共有<span class="badge">${totalPages}</span>页，总记录数<span class="badge">${valueCount}</span>条。
 						</div>
 						<nav aria-label="Page navigation" class="pull-right">
 							<ul class="pagination">
-								<li><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=1">首页</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/getEcnList?pageNo=1">首页</a></li>
 								<c:if test="${curPageNo==1}">
 									<li class="disabled">
 										<a href="#" aria-label="Previous" class="prePage">
@@ -95,10 +98,10 @@
 
 								<c:forEach begin="1" end="${totalPages<5?totalPages:5}" step="1" var="itemPage">
 									<c:if test="${curPageNo == itemPage}">
-										<li class="active"><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=${itemPage}">${itemPage}</a></li>
+										<li class="active"><a href="${pageContext.request.contextPath}/user/getEcnList?pageNo=${itemPage}">${itemPage}</a></li>
 									</c:if>
 									<c:if test="${curPageNo != itemPage}">
-										<li><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=${itemPage}">${itemPage}</a></li>
+										<li><a href="${pageContext.request.contextPath}/user/getEcnList?pageNo=${itemPage}">${itemPage}</a></li>
 									</c:if>
 								</c:forEach>
 
@@ -116,7 +119,7 @@
 										</a>
 									</li>
 								</c:if>
-								<li><a href="${pageContext.request.contextPath}/dept/getDeptList?pageNo=${totalPages}">尾页</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/getEcnList?pageNo=${totalPages}">尾页</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -124,6 +127,7 @@
 			</div><!-- /.dept_info -->
 		
 			<%@ include file="ecninfoAdd.jsp"%>
+			<%@ include file="ecninfoUpdate.jsp"%>
 		</div>
 		<script type="text/javascript">
 			var curPageNo = ${curPageNo};
@@ -132,14 +136,14 @@
 			$(".prePage").click(function () {
 				 if (curPageNo > 1){
 					 var pageNo = curPageNo - 1;
-					 $(this).attr("href", "${pageContext.request.contextPath}/dept/getDeptList?pageNo="+pageNo);
+					 $(this).attr("href", "${pageContext.request.contextPath}/user/getEcnList?pageNo="+pageNo);
 				 }
 			});
 			//下一页
 			$(".nextPage").click(function () {
 				if (curPageNo < totalPages){
 					var pageNo = curPageNo + 1;
-					$(this).attr("href", "${pageContext.request.contextPath}/dept/getDeptList?pageNo="+pageNo);
+					$(this).attr("href", "${pageContext.request.contextPath}/user/getEcnList?pageNo="+pageNo);
 				}
 			});
 			

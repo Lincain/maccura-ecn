@@ -41,7 +41,7 @@
             </a>
             <ul class="nav nav-pills nav-stacked" id="collapse_ecn">
                 <li role="presentation"><a href="#" class="ecn_info">工程更改信息</a></li>
-                <li role="presentation"><a href="#" class="ecn_add_btn" data-toggle="modal" data-target=".ecn-add-modal">工程更改新增</a></li>
+                <li role="presentation"><a href="#" class="ecn_select_btn" data-toggle="modal" data-target=".ecn_select_btn">工程更改查询</a></li>
             	<li class=”nav-divider”></li>
             </ul>
         </li>

@@ -29,6 +29,7 @@
                 <table class="table table-bordered table-hover" id="ecn_table">
                     <thead>
                     	<th>序号</th>
+                    	<th>项目名称</th>
                         <th>ECN名称</th>
                         <th>ECR编号</th>
                         <th>ECN编号</th>
@@ -39,10 +40,11 @@
                         <c:forEach items="${ecnInfos}" var="ecn">
                             <tr>
                             	<td>${ecn.ecnId}</td>
+                            	<td>${ecn.proNo}</td>
                                 <td>${ecn.ecrName}</td>
                                 <td>${ecn.ecrNo}</td>
                                 <td>${ecn.ecnNo}</td>
-                                <td>${ecn.workNo}</td>
+                                <td>${ecn.empNo}</td>
                                 <td>
                                     <a href="#" role="button" class="btn btn-primary ecn_select_btn" data-toggle="modal" data-target=".ecn-extend-modal">查看</a>
                                     <a href="#" role="button" class="btn btn-primary ecn_edit_btn" data-toggle="modal" data-target=".ecn-update-modal">编辑</a>
@@ -55,7 +57,7 @@
 
                 <div class="panel-body">
                     <div class="table_items">
-                        当前第<span class="badge">${curPageNo}</span>页，共有<span class="badge">${totalPages}</span>页，总记录数<span class="badge">${totalItems}</span>条。
+                        当前第<span class="badge">${curPageNo}</span>页，共有<span class="badge">${totalPages}</span>页，总记录数<span class="badge">${valueCount}</span>条。
                     </div>
                     <nav aria-label="Page navigation" class="pull-right">
                         <ul class="pagination">
