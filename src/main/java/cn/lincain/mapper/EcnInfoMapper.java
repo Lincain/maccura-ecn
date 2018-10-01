@@ -29,4 +29,7 @@ public interface EcnInfoMapper {
 
 	int addEcnByUser(@Param("ecnInfo")EcnInfo ecnInfo);
 
+
+	int updateEcn(@Param("ecnInfo")EcnInfo ecnInfo);
+
 }

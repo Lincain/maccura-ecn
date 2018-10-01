@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>ECN更改页面</title>
+    <title>工程更改申请页面</title>
 </head>
 <body>
 <div class="modal fade ecn-update-modal" tabindex="-1" role="dialog" aria-labelledby="ecn-update-modal">
@@ -9,7 +9,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ECN更改</h4>
+                <h4 class="modal-title">工程更改申请单号</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal update_ecn_form">
@@ -20,21 +20,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="update_ecrNo" class="col-sm-3 control-label">ECR编号</label>
+                        <label for="update_ecrNo" class="col-sm-3 control-label">工程更改申请</label>
                         <div class="col-sm-8">
-                            <input type="text" name="ecrNo" class="form-control" id="update_ecrNo">
+                            <input type="text" name="ecrNo" class="form-control" id="update_ecrNo" readonly="readonly">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="update_ecnNo" class="col-sm-3 control-label">ECN编号</label>
+                        <label for="update_ecnNo" class="col-sm-3 control-label">ECN申请时间</label>
                         <div class="col-sm-8">
-                            <input type="text" name="ecnNo" class="form-control" id="update_ecnNo">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="update_workNo" class="col-sm-3 control-label">申请人工号</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="workNo" class="form-control" id="update_workNo">
+                            <input type="text" name="ecnNo" class="form-control ecn_time" id="update_ecnNo">
                         </div>
                     </div>
                 </form>
@@ -67,8 +61,6 @@
                     //回显
                     $("#update_ecnName").val(data.ecrName);
                     $("#update_ecrNo").val(data.ecrNo);
-                    $("#update_ecnNo").val(data.ecnNo);
-                    $("#update_workNo").val(data.workNo);
                 }else {
                     alert("操作失败");
                 }
@@ -79,12 +71,12 @@
 
     $(".ecn_update_btn").click(function () {
         $.ajax({
-            url:"${pageContext.request.contextPath}/ecn/updateEcn/"+edit_ecnId,
+            url:"${pageContext.request.contextPath}/user/updateEcn/",
             type:"PUT",
             data:$(".update_ecn_form").serialize(),
             success:function (data) {
-                if(data.result==200){
-                	window.location.href = "${pageContext.request.contextPath}/ecn/getEcnList?pageNo="+curPageNo;
+                if(data.code==200){
+                	window.location.href = "${pageContext.request.contextPath}/user/getEcnList?pageNo="+curPageNo;
                 } else {
                     alert("更新失败");
                 }
@@ -92,7 +84,20 @@
 
         });
     });
-
+	
+    $(".ecn_time").datetimepicker({
+        format : 'yyyy-mm-dd', // 展现格式
+		startDate : "2010-01-01",// 开始时间
+		endDate : "2020-01-01", // 结束时间
+		autoclose : true, // 选择日期后关闭
+		// 选择器打开之后首先显示的视图
+		// 0表示分钟(默认),1表示小时,2表示天,3表示月,4表示年
+		startView : 2,
+		// 选择器所能够提供的最精确的时间选择视图
+		// 0表示分钟(默认),1表示小时,2表示天,3表示月,4表示年
+		minView : 2,
+		language : 'zh-CN', //显示语言为中文
+    });
 
 </script>
 </body>

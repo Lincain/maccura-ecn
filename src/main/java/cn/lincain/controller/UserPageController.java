@@ -46,7 +46,7 @@ public class UserPageController {
 		List<Project> projects = projectServiceImpl.getProListByEcn();
 
 		result.put("projects", projects);
-		
+
 		return result;
 	}
 
@@ -57,27 +57,27 @@ public class UserPageController {
 		String projectNo = null;
 		String ecrName = null;
 		String ecrTime = null;
-		String empNo=null;
+		String empNo = null;
 
 		projectNo = request.getParameter("projectNo");
 		ecrName = request.getParameter("ecrName");
 		ecrTime = request.getParameter("ecrTime");
 		empNo = request.getParameter("empNo");
-		
-		ecrTime = (ecrTime.length() == 0? "暂时不取ECR" : ecrTime.replaceAll("-", ""));
-		
-		int code = ecnInfoServiceImpl.addEcnByUser(projectNo,ecrName,ecrTime,empNo);
+
+		ecrTime = (ecrTime.length() == 0 ? "暂时不取ECR" : ecrTime.replaceAll("-", ""));
+
+		int code = ecnInfoServiceImpl.addEcnByUser(projectNo, ecrName, ecrTime, empNo);
 		System.out.println(code);
-		if(code != 1) {
-			map.put("result",200);
-		}else {
+		if (code != 1) {
+			map.put("result", 200);
+		} else {
 			map.put("result", 100);
 		}
-		
+
 		return map;
 	}
-	
-	@RequestMapping(value = "/getTotalPages",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/getTotalPages", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Integer> getTotalPages() {
 		Map<String, Integer> map = new HashMap<>();
@@ -86,7 +86,7 @@ public class UserPageController {
 		map.put("code", totalPage);
 		return map;
 	}
-	
+
 	@RequestMapping(value = "/getEcnList")
 	public ModelAndView getEcnList(@RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo) {
 		ModelAndView mav = new ModelAndView("userpage");
@@ -99,11 +99,22 @@ public class UserPageController {
 		int offset = (pageNo - 1) * limit;
 
 		List<EcnInfo> ecnInfos = ecnInfoServiceImpl.getEcnInfoList(offset, limit);
-		
-		System.out.println(ecnInfos);
+
 		mav.addObject("ecnInfos", ecnInfos).addObject("valueCount", valueCount).addObject("totalPages", totalPages)
 				.addObject("curPageNo", pageNo);
 
 		return mav;
+	}
+	@RequestMapping(value = "/updateEcn")
+	@ResponseBody
+	public Map<String, Integer> updateEcn(EcnInfo ecnInfo) {
+		Map<String, Integer> map = new HashMap<>();
+		int code = ecnInfoServiceImpl.updateEcn(ecnInfo);
+		if (code != 1) {
+			map.put("code", 100);
+			return map;
+		}
+		map.put("code", 200);
+		return map;
 	}
 }

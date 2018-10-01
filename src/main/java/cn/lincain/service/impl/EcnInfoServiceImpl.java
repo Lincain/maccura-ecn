@@ -61,5 +61,23 @@ public class EcnInfoServiceImpl implements EcnInfoService {
 		return ecnInfoMapper.addEcnByUser(ecnInfo);
 		
 	}
+
+	public int updateEcn(EcnInfo ecnItem) {
+		int count = 1;
+		String ecnNo = ecnItem.getEcnNo().replaceAll("-", "");
+		List<EcnInfo> ecnInfos = ecnInfoMapper.getEcnInfoListByUser();
+		for (EcnInfo ecnInfo : ecnInfos) {
+			
+			if(ecnInfo.getEcnNo() != null) {
+				if (ecnInfo.getEcnNo().contains(ecnNo)) {
+					count++;
+				}
+			}
+		}
+		
+		ecnNo = EcnTools.toEcn(ecnNo, count);
+		ecnItem.setEcnNo(ecnNo);
+		return ecnInfoMapper.updateEcn(ecnItem);
+	}
 	
 }

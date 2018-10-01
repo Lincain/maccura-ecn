@@ -49,7 +49,7 @@
     var curPageNo = ${curPageNo};
 
     $(".ecn_select_btn").click(function () {
-    	select_workno = $(this).parent().parent().find("td:eq(4)").text();
+    	select_workno = $(this).parent().parent().find("td:eq(5)").text();
         //查询对应deptId的部门信息
         $.ajax({
             url:"${pageContext.request.contextPath}/emp/getEmpByNo/"+select_workno,

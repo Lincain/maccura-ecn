@@ -57,7 +57,7 @@
 
                 <div class="panel-body">
                     <div class="table_items">
-                        当前第<span class="badge">${curPageNo}</span>页，共有<span class="badge">${totalPages}</span>页，总记录数<span class="badge">${totalItems}</span>条。
+                        当前第<span class="badge">${curPageNo}</span>页，共有<span class="badge">${totalPages}</span>页，总记录数<span class="badge">${valueCount}</span>条。
                     </div>
                     <nav aria-label="Page navigation" class="pull-right">
                         <ul class="pagination">

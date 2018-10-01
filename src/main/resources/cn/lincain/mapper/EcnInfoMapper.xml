@@ -61,4 +61,13 @@
     	#{ecnInfo.ecrName},#{ecnInfo.ecnNo},#{ecnInfo.ecrNo},#{ecnInfo.empNo},#{ecnInfo.proNo}
     	)
     </insert>
+    
+    <update id="updateEcn">
+    	UPDATE
+    	tb_ecn
+    	SET
+    	ecn_no=#{ecnInfo.ecnNo}
+    	WHERE
+    	ecr_no=#{ecnInfo.ecrNo}
+    </update>
 </mapper>

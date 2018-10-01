@@ -13,6 +13,6 @@ public class EcnTools {
 		String department = "PD";
 		String ecnOrder = null;
 		ecnOrder = count < 10 ? ("00" + count) : (count < 100 ? ("0" + count) : Integer.valueOf(count).toString());
-		return "ECR-" + department + "-" + ecnTime + ecnOrder;
+		return "ECN-" + department + "-" + ecnTime + ecnOrder;
 	}
 }
